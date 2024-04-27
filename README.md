@@ -8,3 +8,9 @@ Projeto Integrador 3 - 2024.
 - **Site** https://kizumba.pythonanywhere.com
 
 - **Python anywhere** https://www.pythonanywhere.com/user/kizumba/
+
+# Pythonanywhere
+
+- Atualizar repositório: `git pull`
+- Atualizar aplicação: `touch /var/www/kizumba_pythonanywhere_com_wsgi.py`
+
