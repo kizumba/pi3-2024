@@ -8,3 +8,6 @@ def index(request):
 
 def teste(request):
     return render(request, 'teste.html',{})
+
+def ajuda(request):
+    return render(request, 'ajuda.html', {})
