@@ -23,9 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-8l4pwp(tob&g!mvy%(+)n8o)7b1n3+pj-s(pd=y^dqxdw^c^1q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ["http://kizumba.pythonanywhere.com/gamificacao"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
