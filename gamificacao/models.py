@@ -25,8 +25,8 @@ class Equipe(models.Model):
     lider = models.CharField(max_length=30)
 
     turma = models.ForeignKey(Turma, related_name='equipes', null=False, on_delete=models.CASCADE)
-    # atitudes = models.ManyToManyField(Atitude, blank=True)
-    # missoes = models.ManyToManyField(Missao, blank=True)
+    # atitudes = models.ManyToManyField(Atitude, null=True, blank=True)
+    # missoes = models.ManyToManyField(Missao, null=True, blank=True)
 
     def __str__(self):
         return f'{self.nome}, Líder: {self.lider} | Turma: {self.turma.serie}'
