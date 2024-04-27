@@ -65,7 +65,7 @@ class Missao(models.Model):
     equipe = models.ForeignKey(Equipe, related_name='missoes', null=True, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'Nome: {self.nome}, Descrição: {self.descricao}, Concluída: {self.concluida} | Equipe {self.equipe.nome}'
+        return f'{self.nome}, Descrição: {self.descricao}, Concluída: {self.concluida} | Equipe {self.equipe.nome}'
 
 # def get_absolute_url(self):
 #         return reverse('main:listar_turmas')
