@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from django.http import HttpResponse
+from .models import Equipe
 
 def index(request):
-    return HttpResponse("Página teste")
+    equipes = Equipe.objects.all()
+    return render(request, 'index.html',{'equipes':equipes})
