@@ -2,5 +2,20 @@
 
 {% block content %}
     <h1>Turmas</h1>
+    <hr>
+  
+    <div>
+        <a href="{% url 'cadastrarturmas' %}">Cadastrar nova turma</a>
+    </div>
+    
+    <hr>
 
+    <div>
+        <h2>Lista de Turmas</h2>
+        <ul>
+            {% for m in turmas %}
+            <li>{{m}}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

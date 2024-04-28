@@ -2,5 +2,21 @@
 
 {% block content %}
     <h1>Equipes</h1>
+    <hr>
+  
+    <div>
+        <a href="{% url 'cadastrarequipes' %}">Cadastrar nova equipe</a>
+    </div>
+    
+    <hr>
+
+    <div>
+        <h2>Lista de Equipes</h2>
+        <ul>
+            {% for e in equipes %}
+            <li>{{e}}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}

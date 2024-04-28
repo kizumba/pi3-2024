@@ -2,5 +2,21 @@
 
 {% block content %}
     <h1>Atitudes</h1>
+    <hr>
+  
+    <div>
+        <a href="{% url 'cadastraratitudes' %}">Cadastrar nova atitude</a>
+    </div>
+    
+    <hr>
+
+    <div>
+        <h2>Lista de Atitudes</h2>
+        <ul>
+            {% for a in atitudes %}
+            <li>{{a}}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}

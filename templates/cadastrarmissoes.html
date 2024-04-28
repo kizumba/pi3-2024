@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Missões</h1>
+    <hr>
+    
+    <form action="{% url 'missoes' %}" method="post">
+        {% csrf_token %}
+
+        <div>
+            <h2>Cadastrar Nova Missão</h2>
+            Nome <input name="nome" type="text">
+            Descrição <input name="descricao" type="text"><br>
+            Concluída <input name="concluida" type="checkbox"><br>
+            Data Finalização <input name="data_finalizacao" type="date"><br>
+            <button>Enviar</button>
+        </div>
+    </form>
+
+{% endblock %}

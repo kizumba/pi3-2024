@@ -1,12 +1,35 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Ola mundo</h1>
-    <p>Todas as equipes:</p>
+    <h1>Projeto Integrador 3</h1>
+    
+    <hr>
+    <h2>Todas as turmas:</h2>
+    <ul>
+        {% for t in turmas %}
+            <li>{{t}}</li>   
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2>Todas as equipes:</h2>
     <ul>
         {% for e in equipes %}
             <li>{{e}}</li>   
         {% endfor %}
     </ul>
-
+    <hr>
+    <h2>Todas as atitudes:</h2>
+    <ul>
+        {% for a in atitudes %}
+            <li>{{a}}</li>   
+        {% endfor %}
+    </ul>
+    <hr>
+    <h2>Todas as missões:</h2>
+    <ul>
+        {% for m in missoes %}
+            <li>{{m}}</li>   
+        {% endfor %}
+    </ul>
+    <hr>
 {% endblock %}

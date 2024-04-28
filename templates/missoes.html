@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Misssões</h1>
+    <h1>Missões</h1>
+    <hr>
+  
+    <div>
+        <a href="{% url 'cadastrarmissoes' %}">Cadastrar nova missão</a>
+    </div>
+    
+    <hr>
+
+    <div>
+        <h2>Lista de Missões</h2>
+        <ul>
+            {% for m in missoes %}
+            <li>{{m}}</li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}
