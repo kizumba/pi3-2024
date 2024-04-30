@@ -15,6 +15,14 @@
         <ul>
             {% for e in equipes %}
             <li>{{e}}</li>
+            <strong>Atitudes:</strong>
+            <ul>
+                {% for a in lista %}
+                    {% if a.equipe.id_equipe == e.id_equipe %}
+                        <li>Nome: {{a.nome}} | Pontos: {{a.pontos}}</li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
             {% endfor %}
         </ul>
     </div>

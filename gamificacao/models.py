@@ -23,23 +23,15 @@ class Equipe(models.Model):
     id_equipe = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=30)
     lider = models.CharField(max_length=30)
-
+    pontos = models.IntegerField(default=0)
+    
     turma = models.ForeignKey(Turma, related_name='equipes', null=False, on_delete=models.CASCADE)
     # atitudes = models.ManyToManyField(Atitude, null=True, blank=True)
     # missoes = models.ManyToManyField(Missao, null=True, blank=True)
 
     def __str__(self):
-        return f'{self.nome}, Líder: {self.lider} | Turma: {self.turma.serie}'
+        return f'{self.nome}, Líder: {self.lider}, Pontos: {self.pontos} | Turma: {self.turma.serie}'
 
-    # def imprimir(self):
-    #     print(f'Turma {self.Turma}.\n')
-    #     print('Atitudes:\n')
-    #     for atitude in self.atitudes:
-    #         print(f'Atitude: {atitude}')
-    #     print('\n')
-    #     print('Missões:\n')
-    #     for missao in self.missoes:
-    #         print(f'Missão: {missao}')
 
 class Atitude(models.Model):
     id_atitude = models.AutoField(primary_key=True)
@@ -49,10 +41,10 @@ class Atitude(models.Model):
     data_criacao = models.DateField(auto_now=True)
 
     equipe = models.ForeignKey(Equipe, related_name='atitudes', null=True, on_delete=models.CASCADE)
-
-
+    
     def __str__(self):
         return f'Atitude: {self.nome}, Descrição: {self.descricao}, Pontos: {self.pontos}, | Equipe {self.equipe.nome}'
+    
     
 class Missao(models.Model):
     id_missao = models.AutoField(primary_key=True)

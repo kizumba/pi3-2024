@@ -24,8 +24,18 @@ def turmas(request):
 
 def equipes(request):
     equipes = Equipe.objects.all()
+    atitudes = Atitude.objects.all().select_related('equipe')
+    missoes = Missao.objects.all().select_related('equipe')
 
-    return render(request, 'equipes.html', {'equipes':equipes})
+    lista = []
+
+    for e in equipes:
+        for a in atitudes:
+            if a.equipe.id_equipe == e.id_equipe:
+                lista.append(a)
+                e.pontos += a.pontos
+
+    return render(request, 'equipes.html', {'equipes':equipes, 'lista':lista})
 
 def atitudes(request):
     atitudes = Atitude.objects.all()
@@ -49,8 +59,7 @@ def aula(request):
 
 # CADASTROS
 def cadastrar_turmas(request):
-    turma = Turma
-
+    
     return render(request, 'cadastrarturmas.html')
 
 def cadastrar_equipes(request):
