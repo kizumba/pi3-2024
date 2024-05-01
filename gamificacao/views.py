@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from .models import Equipe,Turma, Atitude, Missao
 
+from .forms import TurmasForm, EquipesForm, AtitudesForm, MissoesForm
 
 # Funções para chamar as páginas html
 def index(request):
@@ -24,18 +25,8 @@ def turmas(request):
 
 def equipes(request):
     equipes = Equipe.objects.all()
-    atitudes = Atitude.objects.all().select_related('equipe')
-    missoes = Missao.objects.all().select_related('equipe')
-
-    lista = []
-
-    for e in equipes:
-        for a in atitudes:
-            if a.equipe.id_equipe == e.id_equipe:
-                lista.append(a)
-                e.pontos += a.pontos
-
-    return render(request, 'equipes.html', {'equipes':equipes, 'lista':lista})
+    
+    return render(request, 'equipes.html',{'equipes':equipes})
 
 def atitudes(request):
     atitudes = Atitude.objects.all()
@@ -57,16 +48,108 @@ def aula(request):
     return render(request, 'aula.html',{})
 
 
-# CADASTROS
-def cadastrar_turmas(request):
+# FORMULÁRIOS
+def formturmas(request):
+    lista_turmas = Turma.objects.all()
+
+    if request.method == "GET":
+        form = TurmasForm()
+
+        context = {
+            'form':form,
+            'lista_turmas':lista_turmas
+        }
+
+        return render(request, 'formturmas.html', context=context)
     
-    return render(request, 'cadastrarturmas.html')
+    else:
+        form = TurmasForm(request.POST)
+        if form.is_valid():
+            turma = form.save()
+            form = TurmasForm()
+    
+        context = {
+            'form':form,
+            'lista_turmas':lista_turmas
+        }
 
-def cadastrar_equipes(request):
-    return render(request, 'cadastrarequipes.html')
+        return render(request, 'formturmas.html', context=context)
 
-def cadastrar_atitudes(request):
-    return render(request, 'cadastraratitudes.html')
 
-def cadastrar_missoes(request):
-    return render(request, 'cadastrarmissoes.html')
+def formequipes(request):
+    lista_equipes = Equipe.objects.all()
+
+    if request.method == "GET":
+        form = EquipesForm()
+
+        context = {
+            'form':form,
+            'lista_equipes':lista_equipes
+        }
+
+        return render(request, 'formequipes.html',context=context)
+    
+    else:
+        form = EquipesForm(request.POST)
+        if form.is_valid():
+            equipe = form.save()
+            form = EquipesForm()
+
+        context = {
+            'form':form,
+            'lista_equipes':lista_equipes
+        }
+
+        return render(request, 'formequipes.html',context=context)
+
+def formatitudes(request):
+    lista_atitudes = Atitude.objects.all()
+
+    if request.method == "GET":
+        form = AtitudesForm
+
+        context = {
+            'form':form,
+            'lista_atitudes':lista_atitudes
+        }
+
+        return render(request, 'formatitudes.html', context=context)
+    
+    else:
+        form = AtitudesForm(request.POST)
+        if form.is_valid():
+            atitude = form.save()
+            form = AtitudesForm()
+        
+        context = {
+            'form':form,
+            'lista_atitudes':lista_atitudes
+        }
+
+        return render(request, 'formatitudes.html', context=context)
+
+def formmissoes(request):
+    lista_missoes = Missao.objects.all()
+    
+    if request.method == "GET":
+        form = MissoesForm
+
+        context = {
+            'form':form,
+            'lista_missoes':lista_missoes
+        }
+
+        return render(request, 'formmissoes.html', context=context)
+    
+    else:
+        form = MissoesForm(request.POST)
+        if form.is_valid():
+            missao = form.save()
+            form = MissoesForm()
+        
+        context = {
+            'form':form,
+            'lista_missoes':lista_missoes
+        }
+
+        return render(request, 'formmissoes.html',context=context)

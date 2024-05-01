@@ -3,12 +3,18 @@
 {% block content %}
     <h1>Turmas</h1>
     <hr>
-  
-    <div>
-        <a href="{% url 'formturmas' %}">Cadastrar nova turma</a>
-    </div>
+    <h2>Criar nova turma</h2>
+    <form action="{% url 'formturmas' %}" method="post">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <input type="submit" value="Salvar">
+    </form>
     <hr>
-    <h2>Lista das Turmas</h2>
+    <a href="{% url 'turmas' %}">Voltar</a>    
+
+    <hr>
+    <h3>Turmas Criadas</h3>
     <div>
         <table class="table">
             <tr>
@@ -16,15 +22,13 @@
               <th>Série</th>
               <th>Período</th>
               <th>Data</th>
-              <th>Ações</th>
             </tr>
-            {% for t in turmas %}
+            {% for t in lista_turmas %}
             <tr>
               <td>{{t.id_turma}}</e></td>
               <td>{{t.serie}}</td>
               <td>{{t.periodo}}</td>
               <td>{{t.data_criacao}}</td>
-              <td><button>Editar</button> | <button>Excluir</button></td>
             </tr>
             {% endfor %}
           </table> 

@@ -13,8 +13,8 @@ urlpatterns = [
     path('aula', views.aula, name='aula'),
 
     # telas de cadastro
-    path('cadastrarturmas', views.cadastrar_turmas, name='cadastrarturmas'),
-    path('cadastrarequipes', views.cadastrar_equipes, name='cadastrarequipes'),
-    path('cadastraratitudes',views.cadastrar_atitudes, name='cadastraratitudes'),
-    path('cadastrarmissoes',views.cadastrar_missoes, name='cadastrarmissoes')
+    path('formturmas', views.formturmas, name='formturmas'),
+    path('formrequipes', views.formequipes, name='formequipes'),
+    path('formatitudes',views.formatitudes, name='formatitudes'),
+    path('formmissoes',views.formmissoes, name='formmissoes')
 ]

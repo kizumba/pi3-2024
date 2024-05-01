@@ -3,14 +3,17 @@
 {% block content %}
     <h1>Atitudes</h1>
     <hr>
-  
-    <div>
-        <a href="{% url 'formatitudes' %}">Cadastrar nova atitude</a>
-    </div>
     
-    <hr>
+    <form action="{% url 'formatitudes' %}" method="post">
+        {% csrf_token %}
 
-    <h2>Lista das Atitudes</h2>
+       {{form.as_p}}
+       <input type="submit" value="Salvar">
+    </form>
+    <hr>
+    <a href="{% url 'atitudes' %}">Voltar</a>    
+    <hr>
+    <h3>Atitudes cadastradas</h3>
     <div>
         <table class="table">
             <tr>
@@ -19,16 +22,14 @@
               <th>Pontos</th>
               <th>Descrição</th>
               <th>Data Criação</th>
-              <th>Ações</th>
             </tr>
-            {% for a in atitudes %}
+            {% for a in lista_atitudes %}
             <tr>
               <td>{{a.id_atitude}}</e></td>
               <td>{{a.nome}}</td>
               <td>{{a.pontos}}</td>
               <td>{{a.descricao}}</td>
               <td>{{a.data_criacao}}</td>
-              <td><button>Editar</button> | <button>Excluir</button></td>
             </tr>
             {% endfor %}
           </table> 

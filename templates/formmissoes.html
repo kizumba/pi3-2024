@@ -3,14 +3,17 @@
 {% block content %}
     <h1>Missões</h1>
     <hr>
-  
-    <div>
-        <a href="{% url 'formmissoes' %}">Cadastrar nova missão</a>
-    </div>
     
-    <hr>
+    <form action="{% url 'formmissoes' %}" method="post">
+        {% csrf_token %}
 
-    <h2>Lista das Missões</h2>
+        {{form.as_p}}
+    <input type="submit" value="Salvar">
+    </form>
+    <hr>
+    <a href="{% url 'missoes' %}">Voltar</a>
+    <hr>
+    <h3>Missões cadastradas</h3>
     <div>
         <table class="table">
             <tr>
@@ -20,9 +23,8 @@
               <th>Descrição</th>
               <th>Data Criação</th>
               <th>Data Finalização</th>
-              <th>Ações</th>
             </tr>
-            {% for m in missoes %}
+            {% for m in lista_missoes %}
             <tr>
               <td>{{m.id_missao}}</e></td>
               <td>{{m.nome}}</td>
@@ -30,10 +32,8 @@
               <td>{{m.descricao}}</td>
               <td>{{m.data_criacao}}</td>
               <td>{{m.data_finalizacao}}</td>
-              <td><button>Editar</button> | <button>Excluir</button></td>
             </tr>
             {% endfor %}
           </table> 
     </div>
-
 {% endblock %}
