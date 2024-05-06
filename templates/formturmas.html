@@ -11,8 +11,8 @@
         <input type="submit" value="Salvar">
     </form>
     <hr>
-    <a href="{% url 'turmas' %}">Voltar</a>    
-
+    <!-- <a href="{% url 'turmas' %}">Voltar</a>     -->
+    <input type="submit" value="Voltar" onclick="location.href = '{% url 'turmas' %}'">
     <hr>
     <h3>Turmas Criadas</h3>
     <div>

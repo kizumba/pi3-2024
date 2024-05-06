@@ -2,5 +2,24 @@
 
 {% block content %}
     <h1>Sala de Aula</h1>
-
+    <hr>
+    <table class="table">
+        <tr>
+            <th>Equipes</th>
+            <th>Atitudes</th>
+            <th>Missões</th>
+        </tr>
+        {% for e in equipes %}
+        <tr>
+            <td>{{e.nome}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+        {% for e in equipe_atitudes %}
+            {{e}}<br>
+        {% endfor %}
+    <hr>
+    
 {% endblock %}
+

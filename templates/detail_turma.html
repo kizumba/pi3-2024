@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Turmas</h1>
+    <hr>
+    <h2>Detalhes da turma {{data.id_turma}}</h2>
+    <div>
+        <table class="table">
+            <tr>
+              <th>Código</th>
+              <th>Série</th>
+              <th>Período</th>
+              <th>Data</th>
+              <th>Ações</th>
+            </tr>
+            <tr>
+              <td>{{data.id_turma}}</e></td>
+              <td>{{data.serie}}</td>
+              <td>{{data.periodo}}</td>
+              <td>{{data.data_criacao}}</td>
+              <td><a href="{% url 'list_turmas'%}">Voltar</a></td>
+            </tr>
+          </table> 
+    </div>
+    
+{% endblock %}

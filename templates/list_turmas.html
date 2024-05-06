@@ -3,13 +3,9 @@
 {% block content %}
     <h1>Turmas</h1>
     <hr>
-  
-    <div>
-        <!-- <a href="{% url 'formturmas' %}">Cadastrar nova turma</a> -->
-        <input type="submit" value="Cadastrar nova turma" onclick="location.href = '{% url 'formturmas' %}'">
-    </div>
+    <input type="submit" value="Cadastrar nova turma" onclick="location.href = '{% url 'create_turma' %}'">
     <hr>
-    <h2>Lista das Turmas</h2>
+    <h2>Listar das turmas</h2>
     <div>
         <table class="table">
             <tr>
@@ -19,13 +15,17 @@
               <th>Data</th>
               <th>Ações</th>
             </tr>
-            {% for t in turmas %}
+            {% for t in dataset %}
             <tr>
               <td>{{t.id_turma}}</e></td>
               <td>{{t.serie}}</td>
               <td>{{t.periodo}}</td>
               <td>{{t.data_criacao}}</td>
-              <td><button><a href="">Editar</a></button>| <button>Excluir</button></td>
+              <td> 
+                <a href="{% url 'detail-turma' t.id_turma %}">Detalhes</a> | 
+                <a href="{% url 'update-turma' t.id_turma %}">Editar</a> | 
+                <a href="{% url 'delete-turma' t.id_turma %}">Excluir</a>
+              </td>
             </tr>
             {% endfor %}
           </table> 

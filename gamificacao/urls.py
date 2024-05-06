@@ -16,5 +16,15 @@ urlpatterns = [
     path('formturmas', views.formturmas, name='formturmas'),
     path('formrequipes', views.formequipes, name='formequipes'),
     path('formatitudes',views.formatitudes, name='formatitudes'),
-    path('formmissoes',views.formmissoes, name='formmissoes')
+    path('formmissoes',views.formmissoes, name='formmissoes'),
+
+    # update
+    
+
+    # NOVAS FUNÇÕES
+    path('create_turma', views.create_turma, name='create_turma'),
+    path('list_turmas', views.list_turmas, name='list_turmas'),
+    path('detail_turma/<int:id_turma>/', views.detail_turma, name='detail-turma'),
+    path('update_turma/<int:id_turma>', views.update_turma, name='update-turma'),
+    path('delete_turma/<int:id_turma>', views.delete_turma, name='delete-turma')
 ]

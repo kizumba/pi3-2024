@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render, HttpResponse
 
-from .models import Equipe,Turma, Atitude, Missao
+from .models import Equipe,Turma, Atitude, Missao, Equipe_Atitude, Equipe_Missao
 
 from .forms import TurmasForm, EquipesForm, AtitudesForm, MissoesForm
+
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 # Funções para chamar as páginas html
 def index(request):
@@ -45,7 +48,23 @@ def sobre(request):
     return render(request, 'sobre.html', {})
 
 def aula(request):
-    return render(request, 'aula.html',{})
+    turmas = Turma.objects.all()
+    equipes = Equipe.objects.all()
+    atitudes = Atitude.objects.all()
+    missoes = Missao.objects.all()
+
+    equipe_atitudes = Equipe_Atitude.objects.all()
+    equipe_missoes = Equipe_Missao.objects.all()
+
+    context = {
+        'turmas':turmas,
+        'equipes':equipes,
+        'atitudes':atitudes,
+        'missoes':missoes,
+        'equipe_atitudes':equipe_atitudes,
+        'equipe_missoes':equipe_missoes
+    }
+    return render(request, 'aula.html',context=context)
 
 
 # FORMULÁRIOS
@@ -74,6 +93,21 @@ def formturmas(request):
         }
 
         return render(request, 'formturmas.html', context=context)
+
+def turma_editar(request, id):
+    context = {}
+
+    obj = get_object_or_404(TurmasForm, id = id)
+    
+    form = TurmasForm(request.POST or None, instance=obj)
+
+    if form.is_valid():
+        form.save()
+        return HttpResponseRedirect("/"+id)
+    
+    context["form"] = form
+
+    return render(request, "turmaeditar.html", context)
 
 
 def formequipes(request):
@@ -153,3 +187,70 @@ def formmissoes(request):
         }
 
         return render(request, 'formmissoes.html',context=context)
+
+# TURMA CRUD
+
+def create_turma(request):
+    
+    context = {}
+
+    form = TurmasForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context['form']=form
+    return render(request, 'create_turma.html', context)
+
+def list_turmas(request):
+    context = {}
+
+    context['dataset'] = Turma.objects.all()
+
+    return render(request, "list_turmas.html", context)
+
+def detail_turma(request, id_turma):
+
+    context = {}
+
+    context['data'] = Turma.objects.get(id_turma = id_turma)
+
+    return render(request, "detail_turma.html", context)
+
+def update_turma(request, id_turma):
+    
+    context = {
+        'id':id_turma
+    }
+
+    obj = get_object_or_404(Turma, id_turma = id_turma)
+    
+    form = TurmasForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+
+        turmas = Turma.objects.all()
+
+        return render(request, 'list_turmas.html', {'dataset':turmas})
+
+    context['form'] = form
+
+    return render(request, "update_turma.html", context)
+
+def delete_turma(request, id_turma):
+
+    context = {
+        'id':id_turma
+    }
+
+    obj = get_object_or_404(Turma, id_turma = id_turma)
+
+    if request.method == 'POST':
+        obj.delete()
+        
+        turmas = Turma.objects.all()
+
+        return render(request, 'list_turmas.html', {'dataset':turmas})
+    
+    return render(request, "delete_turma.html", context)
+
+# EQUIPE CRUD
