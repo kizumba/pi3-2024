@@ -316,3 +316,131 @@ def delete_equipe(request, id_equipe):
         return render(request, 'list_equipes.html', {'dataset':equipes})
     
     return render(request, "delete_equipe.html", context)
+
+# ATITUDE CRUD
+def list_atitudes(request):
+    context = {}
+
+    context['dataset'] = Atitude.objects.all()
+
+    return render(request, "list_atitudes.html", context)
+
+def create_atitude(request):
+    
+    context = {}
+
+    form = AtitudesForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context['form']=form
+    return render(request, 'create_atitude.html', context)
+
+def detail_atitude(request, id_atitude):
+
+    context = {}
+
+    context['data'] = Atitude.objects.get(id_atitude = id_atitude)
+
+    return render(request, "detail_atitude.html", context)
+
+def update_atitude(request, id_atitude):
+    
+    context = {
+        'id':id_atitude
+    }
+
+    obj = get_object_or_404(Atitude, id_atitude = id_atitude)
+    
+    form = AtitudesForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+
+        atitudes = Atitude.objects.all()
+
+        return render(request, 'list_atitudes.html', {'dataset':atitudes})
+
+    context['form'] = form
+
+    return render(request, "update_atitude.html", context)
+
+def delete_atitude(request, id_atitude):
+
+    context = {
+        'id':id_atitude
+    }
+
+    obj = get_object_or_404(Atitude, id_atitude = id_atitude)
+
+    if request.method == 'POST':
+        obj.delete()
+        
+        atitudes = Atitude.objects.all()
+
+        return render(request, 'list_atitudes.html', {'dataset':atitudes})
+    
+    return render(request, "delete_atitude.html", context)
+
+# MISSÃO CRUD
+def list_missoes(request):
+    context = {}
+
+    context['dataset'] = Missao.objects.all()
+
+    return render(request, "list_missoes.html", context)
+
+def create_missao(request):
+    
+    context = {}
+
+    form = MissoesForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context['form']=form
+    return render(request, 'create_missao.html', context)
+
+def detail_missao(request, id_missao):
+
+    context = {}
+
+    context['data'] = Missao.objects.get(id_missao = id_missao)
+
+    return render(request, "detail_missao.html", context)
+
+def update_missao(request, id_missao):
+    
+    context = {
+        'id':id_missao
+    }
+
+    obj = get_object_or_404(Missao, id_missao = id_missao)
+    
+    form = MissoesForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+
+        missoes = Missao.objects.all()
+
+        return render(request, 'list_missoes.html', {'dataset':missoes})
+
+    context['form'] = form
+
+    return render(request, "update_missao.html", context)
+
+def delete_missao(request, id_missao):
+
+    context = {
+        'id':id_missao
+    }
+
+    obj = get_object_or_404(Missao, id_missao = id_missao)
+
+    if request.method == 'POST':
+        obj.delete()
+        
+        missoes = Missao.objects.all()
+
+        return render(request, 'list_missoes.html', {'dataset':missoes})
+    
+    return render(request, "delete_missao.html", context)

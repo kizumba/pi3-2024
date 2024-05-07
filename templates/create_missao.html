@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Missões</h1>
+    <hr>
+    <h2>Criar nova missão</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        {{form.as_p}}
+        <input type="submit" value="Salvar">
+        <input type="button" value="Voltar" onclick="location.href = '{% url 'list_missoes' %}'">
+    </form>
+{% endblock %}

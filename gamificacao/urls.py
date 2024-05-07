@@ -33,5 +33,19 @@ urlpatterns = [
     path('create_equipe', views.create_equipe, name='create_equipe'),
     path('detail_equipe/<int:id_equipe>/', views.detail_equipe, name='detail-equipe'),
     path('update_equipe/<int:id_equipe>', views.update_equipe, name='update-equipe'),
-    path('delete_equipe/<int:id_equipe>', views.delete_equipe, name='delete-equipe')
+    path('delete_equipe/<int:id_equipe>', views.delete_equipe, name='delete-equipe'),
+
+    # Atitude
+    path('list_atitudes', views.list_atitudes, name='list_atitudes'),
+    path('create_atitude', views.create_atitude, name='create_atitude'),
+    path('detail_atitude/<int:id_atitude>/', views.detail_atitude, name='detail-atitude'),
+    path('update_atitude/<int:id_atitude>', views.update_atitude, name='update-atitude'),
+    path('delete_atitude/<int:id_atitude>', views.delete_atitude, name='delete-atitude'),
+
+    # Missão
+    path('list_missoes', views.list_missoes, name='list_missoes'),
+    path('create_missao', views.create_missao, name='create_missao'),
+    path('detail_missao/<int:id_missao>/', views.detail_missao, name='detail-missao'),
+    path('update_missao/<int:id_missao>', views.update_missao, name='update-missao'),
+    path('delete_missao/<int:id_missao>', views.delete_missao, name='delete-missao'),
 ]

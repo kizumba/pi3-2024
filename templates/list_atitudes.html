@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Atitudes</h1>
+    <hr>
+    <input type="submit" value="Cadastrar nova atitude" onclick="location.href = '{% url 'create_atitude' %}'">
+    <hr>
+    <h2>Listar das atitude</h2>
+    <div>
+        <table class="table">
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Pontos</th>
+              <th>Descrição</th>
+              <th>Data da Criação</th>
+              <th>Ações</th>
+            </tr>
+            {% for t in dataset %}
+            <tr>
+              <td>{{t.id_atitude}}</e></td>
+              <td>{{t.nome}}</td>
+              <td>{{t.pontos}}</td>
+              <td>{{t.descricao}}</td>
+              <td>{{t.data_criacao}}</td>
+              <td> 
+                <a href="{% url 'detail-atitude' t.id_atitude %}">Detalhes</a> | 
+                <a href="{% url 'update-atitude' t.id_atitude %}">Editar</a> | 
+                <a href="{% url 'delete-atitude' t.id_atitude %}">Excluir</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table> 
+    </div>
+{% endblock %}

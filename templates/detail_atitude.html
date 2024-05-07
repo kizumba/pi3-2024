@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Atitudes</h1>
+    <hr>
+    <h2>Detalhes da atitude {{data.id_atitude}}</h2>
+    <div>
+        <table class="table">
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Pontos</th>
+              <th>Descrição</th>
+              <th>Data da Criação</th>
+              <th>Ações</th>
+            </tr>
+            <tr>
+              <td>{{data.id_atitude}}</e></td>
+              <td>{{data.nome}}</td>
+              <td>{{data.pontos}}</td>
+              <td>{{data.descricao}}</td>
+              <td>{{data.data_criacao}}</td>
+              <td><a href="{% url 'list_atitudes' %}">Voltar</a></td>
+            </tr>
+          </table> 
+    </div>
+    
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Missões</h1>
+    <hr>
+    <h2>Detalhes da missão {{data.id_missão}}</h2>
+    <div>
+        <table class="table">
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th>Concluída</th>
+                <th>Descrição</th>
+                <th>Data de Criação</th>
+                <th>Data de Finalização</th>
+                <th>Ações</th>
+            </tr>
+            <tr>
+              <td>{{data.id_missao}}</e></td>
+              <td>{{data.nome}}</td>
+              <td>{{data.concluida}}</td>
+              <td>{{data.descricao}}</td>
+              <td>{{data.data_criacao}}</td>
+              <td>{{data.data_finalizacao}}</td>
+              <td><a href="{% url 'list_missoes' %}">Voltar</a></td>
+            </tr>
+          </table> 
+    </div>
+    
+{% endblock %}

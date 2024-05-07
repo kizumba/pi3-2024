@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Missões</h1>
+    <hr>
+    <input type="submit" value="Cadastrar nova missão" onclick="location.href = '{% url 'create_missao' %}'">
+    <hr>
+    <h2>Listar das missões</h2>
+    <div>
+        <table class="table">
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Concluída</th>
+              <th>Descrição</th>
+              <th>Data de Criação</th>
+              <th>Data de Finalização</th>
+              <th>Ações</th>
+            </tr>
+            {% for t in dataset %}
+            <tr>
+              <td>{{t.id_missao}}</e></td>
+              <td>{{t.nome}}</td>
+              <td>{{t.concluida}}</td>
+              <td>{{t.descricao}}</td>
+              <td>{{t.data_criacao}}</td>
+              <td>{{t.data_finalizacao}}</td>
+              <td> 
+                <a href="{% url 'detail-missao' t.id_missao %}">Detalhes</a> | 
+                <a href="{% url 'update-missao' t.id_missao %}">Editar</a> | 
+                <a href="{% url 'delete-missao' t.id_missao %}">Excluir</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table> 
+    </div>
+{% endblock %}

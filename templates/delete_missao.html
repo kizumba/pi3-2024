@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Missões</h1>
+    <hr>
+    <h2>Apagar missão {{id}}</h2>
+    <form method="post">
+        {% csrf_token %}
+
+        Você tem certeza que quer apagar?
+
+        <input type="submit" value="Sim"><br>
+        <input type="button" value="Voltar" onclick="location.href = '{% url 'list_missoes' %}'">
+
+    </form>
+{% endblock %}
