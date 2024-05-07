@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Equipes</h1>
+    <hr>
+    <input type="submit" value="Cadastrar nova equipe" onclick="location.href = '{% url 'create_equipe' %}'">
+    <hr>
+    <h2>Listar das equipes</h2>
+    <div>
+        <table class="table">
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Líder</th>
+              <th>Pontos</th>
+              <th>Turma</th>
+              <th>Ações</th>
+            </tr>
+            {% for t in dataset %}
+            <tr>
+              <td>{{t.id_equipe}}</e></td>
+              <td>{{t.nome}}</td>
+              <td>{{t.lider}}</td>
+              <td>{{t.pontos}}</td>
+              <td>{{t.turma}}</td>
+              <td> 
+                <a href="{% url 'detail-equipe' t.id_equipe %}">Detalhes</a> | 
+                <a href="{% url 'update-equipe' t.id_equipe %}">Editar</a> | 
+                <a href="{% url 'delete-equipe' t.id_equipe %}">Excluir</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </table> 
+    </div>
+{% endblock %}

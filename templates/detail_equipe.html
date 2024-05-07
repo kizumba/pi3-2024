@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Equipes</h1>
+    <hr>
+    <h2>Detalhes da equipe {{data.id_equipe}}</h2>
+    <div>
+        <table class="table">
+            <tr>
+              <th>Código</th>
+              <th>Nome</th>
+              <th>Líder</th>
+              <th>Pontos</th>
+              <th>Turma</th>
+              <th>Ações</th>
+            </tr>
+            <tr>
+              <td>{{data.id_equipe}}</e></td>
+              <td>{{data.nome}}</td>
+              <td>{{data.lider}}</td>
+              <td>{{data.pontos}}</td>
+              <td>{{data.turma}}</td>
+              <td><a href="{% url 'list_equipes' %}">Voltar</a></td>
+            </tr>
+          </table> 
+    </div>
+    
+{% endblock %}

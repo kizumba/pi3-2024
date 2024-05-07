@@ -21,10 +21,17 @@ urlpatterns = [
     # update
     
 
-    # NOVAS FUNÇÕES
+    # Turma
     path('create_turma', views.create_turma, name='create_turma'),
     path('list_turmas', views.list_turmas, name='list_turmas'),
     path('detail_turma/<int:id_turma>/', views.detail_turma, name='detail-turma'),
     path('update_turma/<int:id_turma>', views.update_turma, name='update-turma'),
-    path('delete_turma/<int:id_turma>', views.delete_turma, name='delete-turma')
+    path('delete_turma/<int:id_turma>', views.delete_turma, name='delete-turma'),
+
+    # Equipe
+    path('list_equipes', views.list_equipes, name='list_equipes'),
+    path('create_equipe', views.create_equipe, name='create_equipe'),
+    path('detail_equipe/<int:id_equipe>/', views.detail_equipe, name='detail-equipe'),
+    path('update_equipe/<int:id_equipe>', views.update_equipe, name='update-equipe'),
+    path('delete_equipe/<int:id_equipe>', views.delete_equipe, name='delete-equipe')
 ]

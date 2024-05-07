@@ -254,3 +254,65 @@ def delete_turma(request, id_turma):
     return render(request, "delete_turma.html", context)
 
 # EQUIPE CRUD
+def list_equipes(request):
+    context = {}
+
+    context['dataset'] = Equipe.objects.all()
+
+    return render(request, "list_equipes.html", context)
+
+def create_equipe(request):
+    
+    context = {}
+
+    form = EquipesForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+
+    context['form']=form
+    return render(request, 'create_equipe.html', context)
+
+def detail_equipe(request, id_equipe):
+
+    context = {}
+
+    context['data'] = Equipe.objects.get(id_equipe = id_equipe)
+
+    return render(request, "detail_equipe.html", context)
+
+def update_equipe(request, id_equipe):
+    
+    context = {
+        'id':id_equipe
+    }
+
+    obj = get_object_or_404(Equipe, id_equipe = id_equipe)
+    
+    form = EquipesForm(request.POST or None, instance=obj)
+    if form.is_valid():
+        form.save()
+
+        equipes = Equipe.objects.all()
+
+        return render(request, 'list_equipes.html', {'dataset':equipes})
+
+    context['form'] = form
+
+    return render(request, "update_equipe.html", context)
+
+def delete_equipe(request, id_equipe):
+
+    context = {
+        'id':id_equipe
+    }
+
+    obj = get_object_or_404(Equipe, id_equipe = id_equipe)
+
+    if request.method == 'POST':
+        obj.delete()
+        
+        equipes = Equipe.objects.all()
+
+        return render(request, 'list_equipes.html', {'dataset':equipes})
+    
+    return render(request, "delete_equipe.html", context)
