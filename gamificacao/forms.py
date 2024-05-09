@@ -1,5 +1,5 @@
 from django import forms
-from .models import Turma, Equipe, Atitude, Missao
+from .models import Turma, Equipe, Atitude, Missao, Equipe_Atitude, Equipe_Missao
 
 PERIODO = (('M','Manhã'),('T','Tarde'),('N','Noite'))
 
@@ -21,4 +21,5 @@ class AtitudesForm(forms.ModelForm):
 class MissoesForm(forms.ModelForm):
     class Meta:
         model = Missao
-        fields = ["nome","concluida","descricao","data_finalizacao"]
+        fields = ["nome","descricao"]
+

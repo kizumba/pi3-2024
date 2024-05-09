@@ -3,23 +3,41 @@
 {% block content %}
     <h1>Sala de Aula</h1>
     <hr>
+    <p>Selecione a turma para iniciar a aula</p>
+
+    <label for="turmas">Escolha a turma:</label>
+    <select name="turmas" id="turmas">
+        {% for t in turmas %}
+            <option value="{{t.serie}}">{{t.serie}}</option>
+        {% endfor %}
+    </select>
+    <hr>
     <table class="table">
         <tr>
             <th>Equipes</th>
             <th>Atitudes</th>
             <th>Missões</th>
+            <th>Pontuação</th>
+            <th>Classificação</th>
         </tr>
         {% for e in equipes %}
         <tr>
             <td>{{e.nome}}</td>
+            <td>
+               {% for a in atitudes %}
+                <input type="button" value="{{a.nome}}">
+               {% endfor %}
+            </td>
+            <td>
+                {% for m in missoes %}
+                    <input type="button" value="{{m.nome}}">
+               {% endfor %}
+            </td>
+            <td> {{e.pontos}} </td>
+            <td>-----</td>
         </tr>
         {% endfor %}
     </table>
-    <hr>
-        {% for e in equipe_atitudes %}
-            {{e}}<br>
-        {% endfor %}
-    <hr>
     
 {% endblock %}
 

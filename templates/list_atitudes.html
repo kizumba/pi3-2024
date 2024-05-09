@@ -13,7 +13,6 @@
               <th>Nome</th>
               <th>Pontos</th>
               <th>Descrição</th>
-              <th>Data da Criação</th>
               <th>Ações</th>
             </tr>
             {% for t in dataset %}
@@ -22,7 +21,6 @@
               <td>{{t.nome}}</td>
               <td>{{t.pontos}}</td>
               <td>{{t.descricao}}</td>
-              <td>{{t.data_criacao}}</td>
               <td> 
                 <a href="{% url 'detail-atitude' t.id_atitude %}">Detalhes</a> | 
                 <a href="{% url 'update-atitude' t.id_atitude %}">Editar</a> | 

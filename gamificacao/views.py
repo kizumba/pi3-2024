@@ -9,17 +9,7 @@ from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 
 # Funções para chamar as páginas html
 def index(request):
-    turmas = Turma.objects.all()
-    equipes = Equipe.objects.all()
-    atitudes = Atitude.objects.all()
-    missoes = Missao.objects.all()
-
-    return render(request, 'index.html',{
-            'turmas':turmas,
-            'equipes':equipes,
-            'atitudes':atitudes,
-            'missoes':missoes
-        })
+    return render(request, 'index.html')
 
 def turmas(request):
     turmas = Turma.objects.all()
